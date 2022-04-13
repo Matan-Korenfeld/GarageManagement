@@ -6,7 +6,6 @@ import com.example.garagemanagement.logicmanager.GarageManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Map;
 
 @RestController
 @RequestMapping("garage")
@@ -14,6 +13,7 @@ public class GarageRestApi {
 
     /**
      * Returned vehicles are sorted by model name
+     *
      * @return
      */
     @GetMapping
@@ -42,6 +42,7 @@ public class GarageRestApi {
 
     /**
      * Returned vehicles are sorted by model name
+     *
      * @return
      */
     @GetMapping("/retrieve")

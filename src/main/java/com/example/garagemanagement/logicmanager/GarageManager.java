@@ -29,7 +29,7 @@ public class GarageManager {
 
         if (garageManager == null) {
             synchronized (garageLockObject) {
-                if(garageManager == null) {
+                if (garageManager == null) {
                     garageManager = new GarageManager();
                 }
             }

@@ -1,9 +1,9 @@
 package com.example.garagemanagement.entities.vehicle;
 
-import com.example.garagemanagement.entities.VehicleException;
-import com.example.garagemanagement.entities.engines.Engine;
 import com.example.garagemanagement.entities.Tire;
+import com.example.garagemanagement.entities.VehicleException;
 import com.example.garagemanagement.entities.VehicleStatus;
+import com.example.garagemanagement.entities.engines.Engine;
 
 import java.util.List;
 import java.util.Objects;
