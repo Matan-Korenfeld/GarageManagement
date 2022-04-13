@@ -21,6 +21,9 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     }
 
     public void setModelName(String modelName) {
+        if (modelName == null || modelName.isEmpty()) {
+            throw new VehicleException("Please enter model name of the car");
+        }
         this.modelName = modelName;
     }
 

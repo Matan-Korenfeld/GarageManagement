@@ -13,8 +13,9 @@ import java.util.List;
 
 public class GarageManager {
 
-    private static GarageManager garageManager = null;
+    private static GarageManager garageManager;
     private final HashMap<String, Vehicle> vehicleInGarage;
+    private static final Object garageLockObject = new Object();
 
     private GarageManager() {
         this.vehicleInGarage = new HashMap<>();
@@ -25,9 +26,15 @@ public class GarageManager {
     }
 
     public static GarageManager Instance() {
+
         if (garageManager == null) {
-            garageManager = new GarageManager();
+            synchronized (garageLockObject) {
+                if(garageManager == null) {
+                    garageManager = new GarageManager();
+                }
+            }
         }
+
         return garageManager;
     }
 
@@ -39,7 +46,7 @@ public class GarageManager {
             vehicleInGarage.put(vehicleToAdd.getLicenseNumber(), vehicleToAdd);
 
         } catch (Exception e) {
-            throw new VehicleException("Cannot create this vehicle -" + e.getMessage());
+            throw new VehicleException("Cannot create this vehicle - " + e.getMessage());
         }
 
         return vehicleToAdd;
