@@ -6,7 +6,7 @@ import com.example.garagemanagement.dao.VehicleStatus;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class Vehicle implements Comparable<Vehicle>{
+public abstract class Vehicle implements Comparable<Vehicle> {
 
     private String modelName;
     private String LicenseNumber;

@@ -1,7 +1,7 @@
 package com.example.garagemanagement.dao;
 
 public enum VehicleType {
-    RegularMotorcycle ,
+    RegularMotorcycle,
     ElectricMotorcycle,
     RegularCar,
     ElectricCar,

@@ -18,7 +18,7 @@ public abstract class Engine {
     }
 
     public void setEnergyPercentage(double energyPercentage) {
-        if (energyPercentage <=100 && this.energyPercentage < energyPercentage) {
+        if (energyPercentage <= 100 && this.energyPercentage < energyPercentage) {
             this.energyPercentage = energyPercentage;
         }
     }

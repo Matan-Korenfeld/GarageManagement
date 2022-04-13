@@ -1,8 +1,10 @@
 package com.example.garagemanagement.logicmanager;
 
-import com.example.garagemanagement.dao.*;
-import com.example.garagemanagement.dao.vehicle.VehiclesFactory;
+import com.example.garagemanagement.dao.Tire;
+import com.example.garagemanagement.dao.VehicleException;
+import com.example.garagemanagement.dao.VehicleStatus;
 import com.example.garagemanagement.dao.vehicle.Vehicle;
+import com.example.garagemanagement.dao.vehicle.VehiclesFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,11 +35,11 @@ public class GarageManager {
         Vehicle vehicleToAdd = null;
 
         try {
-            vehicleToAdd = VehiclesFactory.createVehicle(vehicleType,carModelName,licenseNumber);
+            vehicleToAdd = VehiclesFactory.createVehicle(vehicleType, carModelName, licenseNumber);
             vehicleInGarage.put(vehicleToAdd.getLicenseNumber(), vehicleToAdd);
 
         } catch (Exception e) {
-            throw new VehicleException("Cannot create this vehicle",e);
+            throw new VehicleException("Cannot create this vehicle", e);
         }
 
         return vehicleToAdd;
@@ -51,8 +53,7 @@ public class GarageManager {
 
             if (vehicleToRetrieve.getVehicleStatus() == VehicleStatus.Ready) {
                 vehicleInGarage.remove(licenseNumber);
-            }
-            else {
+            } else {
                 throw new VehicleException("This vehicle is not ready yet");
             }
 
@@ -65,8 +66,9 @@ public class GarageManager {
 
     public Collection<Vehicle> retrieveAllAvailableVehicles() {
         List<Vehicle> returnedVehicles = new ArrayList<>();
+        Collection<Vehicle> vehiclesToCheck = vehicleInGarage.values().stream().toList();
 
-        for (Vehicle vehicleToRetrieve : vehicleInGarage.values()) {
+        for (Vehicle vehicleToRetrieve : vehiclesToCheck) {
             if (vehicleToRetrieve.getVehicleStatus() == VehicleStatus.Ready) {
                 returnedVehicles.add(vehicleInGarage.remove(vehicleToRetrieve.getLicenseNumber()));
             }

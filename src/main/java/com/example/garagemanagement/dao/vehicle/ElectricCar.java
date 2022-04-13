@@ -1,6 +1,6 @@
 package com.example.garagemanagement.dao.vehicle;
 
-class ElectricCar extends Vehicle{
+class ElectricCar extends Vehicle {
 
     public ElectricCar() {
         super();
