@@ -1,4 +1,4 @@
-package com.example.garagemanagement.dao;
+package com.example.garagemanagement.entities;
 
 public class Tire {
 
@@ -14,14 +14,14 @@ public class Tire {
         return currentTirePressure;
     }
 
+    public int getMaxTirePressure() {
+        return maxTirePressure;
+    }
+
     public void setCurrentTirePressure(int currentTirePressure) {
         if (currentTirePressure < maxTirePressure && currentTirePressure >= 0) {
             this.currentTirePressure = currentTirePressure;
         }
-    }
-
-    public int getMaxTirePressure() {
-        return maxTirePressure;
     }
 
     public void setMaxTirePressure(int maxTirePressure) {

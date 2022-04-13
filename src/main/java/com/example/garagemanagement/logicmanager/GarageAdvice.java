@@ -1,6 +1,6 @@
 package com.example.garagemanagement.logicmanager;
 
-import com.example.garagemanagement.dao.VehicleException;
+import com.example.garagemanagement.entities.VehicleException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,10 +1,10 @@
 package com.example.garagemanagement.logicmanager;
 
-import com.example.garagemanagement.dao.Tire;
-import com.example.garagemanagement.dao.VehicleException;
-import com.example.garagemanagement.dao.VehicleStatus;
-import com.example.garagemanagement.dao.vehicle.Vehicle;
-import com.example.garagemanagement.dao.vehicle.VehiclesFactory;
+import com.example.garagemanagement.entities.Tire;
+import com.example.garagemanagement.entities.VehicleException;
+import com.example.garagemanagement.entities.VehicleStatus;
+import com.example.garagemanagement.entities.vehicle.Vehicle;
+import com.example.garagemanagement.entities.vehicle.VehiclesFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,7 +14,7 @@ import java.util.List;
 public class GarageManager {
 
     private static GarageManager garageManager = null;
-    private HashMap<String, Vehicle> vehicleInGarage;
+    private final HashMap<String, Vehicle> vehicleInGarage;
 
     private GarageManager() {
         this.vehicleInGarage = new HashMap<>();
@@ -32,21 +32,21 @@ public class GarageManager {
     }
 
     public Vehicle addNewVehicle(String vehicleType, String licenseNumber, String carModelName) {
-        Vehicle vehicleToAdd = null;
+        Vehicle vehicleToAdd;
 
         try {
             vehicleToAdd = VehiclesFactory.createVehicle(vehicleType, carModelName, licenseNumber);
             vehicleInGarage.put(vehicleToAdd.getLicenseNumber(), vehicleToAdd);
 
         } catch (Exception e) {
-            throw new VehicleException("Cannot create this vehicle", e);
+            throw new VehicleException("Cannot create this vehicle -" + e.getMessage());
         }
 
         return vehicleToAdd;
     }
 
     public Vehicle retrieveSingleVehicle(String licenseNumber) {
-        Vehicle vehicleToRetrieve = null;
+        Vehicle vehicleToRetrieve;
 
         try {
             vehicleToRetrieve = vehicleInGarage.get(licenseNumber);
@@ -78,7 +78,7 @@ public class GarageManager {
     }
 
     public Vehicle inflateVehicleTires(String licenseNumber) {
-        Vehicle vehicleToInflate = null;
+        Vehicle vehicleToInflate;
         try {
             vehicleToInflate = vehicleInGarage.get(licenseNumber);
 
@@ -93,7 +93,7 @@ public class GarageManager {
     }
 
     public Vehicle addEnergy(String licenseNumber) {
-        Vehicle vehicleToAddEnergy = null;
+        Vehicle vehicleToAddEnergy;
 
         try {
             vehicleToAddEnergy = vehicleInGarage.get(licenseNumber);
@@ -107,7 +107,7 @@ public class GarageManager {
     }
 
     public Vehicle changeStatusOfVehicle(String licenseNumber, String vehicleStatusInString) {
-        Vehicle vehicleToChangeStatus = null;
+        Vehicle vehicleToChangeStatus;
 
         try {
             VehicleStatus vehicleStatus = VehicleStatus.valueOf(vehicleStatusInString);

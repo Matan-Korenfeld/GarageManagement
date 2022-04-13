@@ -1,6 +1,6 @@
 package com.example.garagemanagement.rest;
 
-import com.example.garagemanagement.dao.vehicle.Vehicle;
+import com.example.garagemanagement.entities.vehicle.Vehicle;
 import com.example.garagemanagement.logicmanager.GarageManager;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +11,10 @@ import java.util.Map;
 @RequestMapping("garage")
 public class GarageRestApi {
 
+    /**
+     * Returned vehicles are sorted by model name
+     * @return
+     */
     @GetMapping
     public Collection<Vehicle> getAllVehiclesInGarage() {
         return GarageManager.Instance().getAllVehiclesInGarage();
@@ -35,6 +39,10 @@ public class GarageRestApi {
         return GarageManager.Instance().retrieveSingleVehicle(licenseNumber);
     }
 
+    /**
+     * Returned vehicles are sorted by model name
+     * @return
+     */
     @GetMapping("/retrieve")
     public Collection<Vehicle> retrieveVehicles() {
         return GarageManager.Instance().retrieveAllAvailableVehicles();
@@ -58,8 +66,8 @@ public class GarageRestApi {
      * @param statusParams
      */
     @PutMapping("/change_status")
-    public void changeStatusOfVehicle(@RequestBody Map<String, String> statusParams) {
-        GarageManager.Instance().changeStatusOfVehicle(statusParams.get("licenseNumber"), statusParams.get("vehicleStatus"));
+    public Vehicle changeStatusOfVehicle(@RequestBody Map<String, String> statusParams) {
+        return GarageManager.Instance().changeStatusOfVehicle(statusParams.get("licenseNumber"), statusParams.get("vehicleStatus"));
     }
 
 }

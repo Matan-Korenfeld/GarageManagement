@@ -1,4 +1,4 @@
-package com.example.garagemanagement.dao.vehicle;
+package com.example.garagemanagement.entities.engines;
 
 public abstract class Engine {
     private double energyPercentage;

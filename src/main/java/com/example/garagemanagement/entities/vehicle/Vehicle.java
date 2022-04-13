@@ -1,7 +1,9 @@
-package com.example.garagemanagement.dao.vehicle;
+package com.example.garagemanagement.entities.vehicle;
 
-import com.example.garagemanagement.dao.Tire;
-import com.example.garagemanagement.dao.VehicleStatus;
+import com.example.garagemanagement.entities.VehicleException;
+import com.example.garagemanagement.entities.engines.Engine;
+import com.example.garagemanagement.entities.Tire;
+import com.example.garagemanagement.entities.VehicleStatus;
 
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +25,9 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     }
 
     public void setLicenseNumber(String licenseNumber) {
+        if (licenseNumber.length() != 9) {
+            throw new VehicleException("LicenseNumber should be 9 digits");
+        }
         LicenseNumber = licenseNumber;
     }
 

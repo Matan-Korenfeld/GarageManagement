@@ -1,7 +1,7 @@
-package com.example.garagemanagement.dao.vehicle;
+package com.example.garagemanagement.entities.vehicle;
 
-import com.example.garagemanagement.dao.Tire;
-import com.example.garagemanagement.dao.VehicleType;
+import com.example.garagemanagement.entities.Tire;
+import com.example.garagemanagement.entities.VehicleType;
 
 import java.util.ArrayList;
 import java.util.List;

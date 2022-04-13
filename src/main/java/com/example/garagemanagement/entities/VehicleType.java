@@ -1,4 +1,4 @@
-package com.example.garagemanagement.dao;
+package com.example.garagemanagement.entities;
 
 public enum VehicleType {
     RegularMotorcycle,
