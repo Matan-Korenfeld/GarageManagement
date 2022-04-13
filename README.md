@@ -8,5 +8,5 @@ The application should allow its users the following operations:
 3. Retrieve all of the available vehicles.
 4. Inflate vehicle tires to maximum pressure.
 5. Add energy (Refuel a vehicle or recharge) by license number.
-6. Get all vehicels.
+6. Get all vehicles.
 7. Change the vehicle status in the garage.
